@@ -12,6 +12,7 @@ app.set('view engine',"ejs");
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(cache());   
+
 //load static assets
 app.use('/static',express.static(path.join(__dirname,'public')))
 app.use('/assets',express.static(path.join(__dirname,'public/assets')))    
@@ -26,6 +27,7 @@ app.use('/route',router);
 
 //home route
     app.get('/',(req,res)=>{
+            
             if(req.session.user){
                 res.render('dashboard',{user:req.session.user})
             }else{
@@ -33,9 +35,6 @@ app.use('/route',router);
             }
             res.render('base',{title : "Login Page"});
     })
-
-    
-
    
 app.listen(port,()=>{
     console.log("Listening to the server on http://localhost:3000")
