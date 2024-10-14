@@ -3,8 +3,8 @@ var router=express.Router();
 
 
 const credential={
-    email: "admin@gmail.com",
-    password: "pass123"
+    email: process.env.email,
+    password: process.env.password
 }
 
 
